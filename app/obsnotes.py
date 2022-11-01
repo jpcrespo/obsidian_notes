@@ -8,8 +8,8 @@ def crear_nota(tuit):
         f.write('aliases: []\n')
         f.write('---\n')
         link='https://twitter.com/user/status/'
-        f.write('Link Referencia: '+link+tuit._json['id_str'])
-        f.write('\n---\n')
+        f.write('\n \n Link Referencia: '+link+tuit._json['id_str'])
+        f.write('\n \n---\n')
         in_txt=tuit._json['display_text_range'][0]
         f.write('\n'+tuit._json['full_text'][in_txt:]+'\n')
 

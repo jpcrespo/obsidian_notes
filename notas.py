@@ -11,13 +11,13 @@ import os, tweepy
 #revisamos si existe el log
 
 if(os.path.exists('log_notes.npy')):
-	aux         = np.load('log_notes.npy', allow_pickle='TRUE') 
+	aux         = np.load('app/log_notes.npy', allow_pickle='TRUE') 
 	last_tuit  = aux
 else:
     aux = 0
-    np.save('log_notes.npy',aux)
+    np.save('app/log_notes.npy',aux)
 
-api = login()
+api = login(path='/home/ghost/rpibots/')
 
 historial = []
 target = 'jpcr3spo'
@@ -36,5 +36,5 @@ for tuit in historial:
     if tuit._json['full_text'][in_txt:in_txt+2]=='n!':
         crear_nota(tuit)
         aux = tuit._json['id']
-        np.save('log_notes.npy',aux)
+        np.save('app/log_notes.npy',aux)
 
