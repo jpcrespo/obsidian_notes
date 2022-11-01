@@ -18,16 +18,17 @@ def login(path=''):
 
     print('autentificación - Twitter API')
     api = tweepy.API(auth)
-
     try:
         api.verify_credentials()
-        print("sesión iniciada")
+        print("Sesión iniciada")
+        return api
     except:
         print("ERROR")
+        return False
 
 
 
 if __name__ == '__main__':
-   #path del .env 
-    p1 = '/home/ghost/rpibots/'
-    login(path=p1)
+#path del .env 
+#p1 = '/home/ghost/rpibots/'
+    login()
