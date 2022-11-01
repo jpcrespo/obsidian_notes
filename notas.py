@@ -10,13 +10,18 @@ import os, tweepy
 
 #revisamos si existe el log
 
-if(os.path.exists('log_notes.npy')):
-	aux         = np.load('app/log_notes.npy', allow_pickle='TRUE') 
+#path (pt) es el directorio donde se encuentra el log
+
+pt = '/home/ghost/rpibots/obsidian_notes/app/'
+
+if(os.path.exists(pt+'log_notes.npy')):
+	aux         = np.load(pt+'log_notes.npy', allow_pickle='TRUE') 
 	last_tuit  = aux
 else:
     aux = 0
-    np.save('app/log_notes.npy',aux)
+    np.save(pt+'log_notes.npy',aux)
 
+#el api usa como path la dirección de donde estan las variables de entorno .env
 api = login(path='/home/ghost/rpibots/')
 
 historial = []
@@ -36,5 +41,5 @@ for tuit in historial:
     if tuit._json['full_text'][in_txt:in_txt+2]=='n!':
         crear_nota(tuit)
         aux = tuit._json['id']
-        np.save('app/log_notes.npy',aux)
+        np.save(pt+'log_notes.npy',aux)
 
